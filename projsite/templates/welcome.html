@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome Page
+{% endblock %}
+
+{% block top %}
+    Welcome!
+{% endblock %}
+
+{% block content %}
+    <section class="centered">
+        <p><a class="home-button" href="{% url 'accounts:login' %}">Login</a></p>
+        <p>- OR -</p>
+        <p><a class="home-button" href="{% url 'accounts:new-account' %}">Create Account</a></p>
+    </section>
+{% endblock %}

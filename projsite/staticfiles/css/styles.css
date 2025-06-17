@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+section.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+header {
+    display: flex;
+    background-color: rgb(242, 235, 105);
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: black;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-bottom: 2px solid black;
+    font-family: tomoha, sans-serif;
+    font-size: 16px;
+    background: none;
+}
+select {
+    appearance: none;
+    width: 250px;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid black;
+    font-family: tomoha, sans-serif;
+    font-size: 16px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="black" d="M7 10l7 7 7-7z"/></svg>') no-repeat right 10px center/18px 18px;
+}
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 36px;
+    text-align: center;
+}
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 28px;
+}
+h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+    margin-top: 30px;;
+}
+form button {
+    align-self: center;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: tohoma, sans-serif;
+    font-size: 20px;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.form-row label {
+    font-size: 18px;
+    font-family: tohoma, sans-serif;
+    color: black;
+    margin-right: 10px;
+}
+.form-row input {
+    flex: 1;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    height: 16px
+}

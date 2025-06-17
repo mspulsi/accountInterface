@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block top %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <section class="centered">
+        <form id="find_form" action="{% url 'accounts:login' %}" method="post">
+            <h2>Enter an Email or Phone to Find Your Account:</h2>
+            <div class="form-row">
+                <label for="email">Email: </label>
+                <input id="email" type="text" name="email">
+            </div>
+            <div class="error" id="emailError"></div>
+            <div class="form-row">
+                <label for="phone">Phone: </label>
+                <input id="phone" type="text" name="phone">
+            </div>
+            <div class="error" id="phoneError"></div>
+            <div class="error" id="formError">
+            {% if error %}
+                Sorry, it looks like there is no account with that contact information.
+            {% endif %}
+            </div>
+            <button type="submit">Login</button>
+            {% csrf_token %}
+        </form>
+        <p>Don't have an account? click <a href="{% url 'accounts:new-account' %}">here</a> to make one.</p>
+    </section>
+{% endblock %}

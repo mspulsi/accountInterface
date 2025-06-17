@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Account Home
+{% endblock %}
+
+{% block top %}
+    Account Home
+{% endblock %}
+
+{% block content %}
+    <section class="centered">
+        <section class="account-info">
+            <h2>Account Info:</h2>
+            <h3>Name: </h3><span>{{ account.first_name }} {{ account.last_name }}</span>
+            <h3>Email: </h3><span>{{ account.email }}</span>
+            <h3>Phone: </h3><span>{{ account.phone }}</span>
+            <h3>Address: </h3><span>{{ account.street }}, {{ account.city }}, {{ account.state }}, {{ account.zipcode }} </span>
+        </section>
+        <form class="buttons" action="{% url 'accounts:home' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="account_id" value="{{ account.id }}">
+            <button type="submit" name="logout">Logout</button>
+            <button type="submit" name="edit">Edit Account</button>
+            <button type="submit" name="delete">Delete Account</button>
+            <button type="submit" name="create">Create Account</button>
+        </form>
+    </section>
+{% endblock %}
