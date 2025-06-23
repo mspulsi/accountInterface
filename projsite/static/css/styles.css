@@ -1,9 +1,11 @@
+* {
+    box-sizing: border-box;
+}
 body {
     height: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -36,8 +38,8 @@ input {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: none;
-    border-bottom: 2px solid black;
+    border: 2px solid lightslategray;
+    border-radius: 3px;
     font-family: tomoha, sans-serif;
     font-size: 16px;
     background: none;
@@ -47,9 +49,8 @@ select {
     width: 250px;
     padding: 10px;
     margin-top: 5px;
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid black;
+    border: 2px solid lightslategray;
+    border-radius: 3px;
     font-family: tomoha, sans-serif;
     font-size: 16px;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="black" d="M7 10l7 7 7-7z"/></svg>') no-repeat right 10px center/18px 18px;
@@ -76,14 +77,10 @@ h3 {
 form {
     display: flex;
     flex-direction: column;
-    width: 650px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 50px;
-    padding-top: 30px;
-    margin-top: 30px;
+    width: 600px;
+    padding: 30px 60px 30px 60px;
     background-color: #d5d5d5;
-    border: 5px solid black;
+    border: 20px solid rgb(203, 203, 203);
 }
 form button {
     align-self: center;
@@ -97,24 +94,26 @@ form button {
     font-family: tohoma, sans-serif;
     font-size: 20px;
 }
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    align-items: center;
-}
-.form-row label {
-    font-size: 18px;
+label {
+    font-size: 14px;
     font-family: tohoma, sans-serif;
     color: black;
-    margin-right: 10px;
 }
-.form-row input {
-    flex: 1;
+.form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: auto;
 }
 .error {
     color: red;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 5px;
     height: 16px
 }
@@ -162,4 +161,12 @@ form.buttons button {
 .account-info {
     border-bottom: 5px solid black;
     padding-bottom: 30px;
+}
+.password-button {
+    background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 640 480' xmlns='http://www.w3.org/2000/svg'><ellipse cx='301' cy='199' fill='none' stroke='black' stroke-width='18' rx='39' ry='35.5'/><path d='m201,201.5c0,0 24,-70 99,-70c75,0 101,70 101,69.5' fill='none' stroke='black' stroke-width='18'/></svg>") no-repeat center center;
+    background-size: 60px 60px;
+    border: none;
+    width: 32px;
+    height: 35px;
+    cursor: pointer;
 }

@@ -5,9 +5,10 @@ from .models import Account
 def new_account(request):
     if request.method == "POST":
         account = Account(
+        email=request.POST.get('email'),
+        password=request.POST.get('password'),
         first_name=request.POST.get('first_name'),
         last_name=request.POST.get('last_name'),
-        email=request.POST.get('email'),
         phone=request.POST.get('phone'),
         street=request.POST.get('street'),
         city=request.POST.get('city'),
@@ -23,24 +24,16 @@ def new_account(request):
 def login(request):
     if request.method == "POST":
         email = request.POST.get('email', '').strip()
-        phone = request.POST.get('phone', '').strip()
+        password = request.POST.get('password')
 
         # Determine which field was filled
-        if email:
-            # Search by email
-            account = Account.objects.filter(email=email).first()
-        elif phone:
-            # Search by phone
-            account = Account.objects.filter(phone=phone).first()
-        else:
-            account = None
-
-        if account:
+        account = Account.objects.filter(email=email).first()
+        if account and account.password == password:
+            # If the password matches, log in the user
             request.session['account_id'] = account.id
             return redirect('accounts:home')
         else:
-            return render(request, 'accounts/login.html', {'error': 'Account not found'})
-            
+            return render(request, 'accounts/login.html', {'error': 'Email or password is incorrect.'})
     else:
         return render(request, 'accounts/login.html')
     

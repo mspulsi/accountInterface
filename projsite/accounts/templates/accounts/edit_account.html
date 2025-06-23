@@ -11,97 +11,98 @@
 {% block content %}
     <main>
         <section class="centered">
-            <form id="form" method="post" action="{% url 'accounts:edit-account' %}">
-                <h2 style="margin-left: -30px;">Make changes to any of the following account fields.</h2>
-                <div class="form-row">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" id="first_name" name="first_name" value="{{ account.first_name }}"><br>
-                    <label style="margin-left: 10px;" for="last_name">Last Name:</label>
-                    <input type="text" id="last_name" name="last_name" value="{{ account.last_name }}"><br>
+            <form id="edit_form" method="post" action="{% url 'accounts:edit-account' %}">
+                <h2>Make changes to any of the following account fields.</h2>
+                <div class="form-group">
+                    <div class="form-stack">
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="{{ account.first_name }}">
+                    </div>
+                    <div class="form-stack">
+                        <label style="margin-left: 10px;" for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="{{ account.last_name }}">
+                    </div>
                 </div>
                 <div class="error" id="nameError"></div>
-                <div class="form-row">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" value="{{ account.email }}"><br>
-                </div>
-                <div class="error" id="emailError"></div>
-                <div class="form-row">
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" value="{{ account.phone }}"><br>
-                </div>
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" value="{{ account.phone }}">
                 <div class="error" id="phoneError"></div>
-                <h3 style="margin-left: -30px; font-size: 20px;">Home Address:</h3>
-                <div class="form-row">
-                    <label for="street">Street:</label>
-                    <input style="flex: 2" type="text" id="street" name="street" value="{{ account.street }}"><br>
-                    <label  style="margin-left: 10px;" for="city">City:</label>
-                    <input type="text" id="city" name="city" value="{{ account.city }}"><br>
+                <h3>Home Address</h3>
+                <div class="form-group">
+                    <div class="form-stack" style="flex: 2;">
+                        <label for="street">Street</label>
+                        <input style="flex: 2" type="text" id="street" name="street" value="{{ account.street }}">
+                        <span class="error"  id="streetError"></span>
+                    </div>
+                    <div class="form-stack" style="flex: 1;">
+                        <label  style="margin-left: 10px;" for="city">City</label>
+                        <input type="text" id="city" name="city" value="{{ account.city }}">
+                        <span class="error" id="cityError"></span>
+                    </div>
                 </div>
-                <div class="form-row">
-                    <span class="error"  id="streetError"></span>
-                    <span class="error" id="cityError"></span>
-                </div>
-                <div class="form-row">
-                    <label for="state">State:</label>
-                    <select name="state" id="state" value="{{ account.state }}">
-                        <option value="noState"></option>
-                        <option value="alabama" {% if account.state == "alabama" %}selected{% endif %}>Alabama</option>
-                        <option value="alaska" {% if account.state == "alaska" %}selected{% endif %}>Alaska</option>
-                        <option value="arizona" {% if account.state == "arizona" %}selected{% endif %}>Arizona</option>
-                        <option value="arkansas" {% if account.state == "arkansas" %}selected{% endif %}>Arkansas</option>
-                        <option value="california" {% if account.state == "california" %}selected{% endif %}>California</option>
-                        <option value="colorado" {% if account.state == "colorado" %}selected{% endif %}>Colorado</option>
-                        <option value="connecticut" {% if account.state == "connecticut" %}selected{% endif %}>Connecticut</option>
-                        <option value="delaware" {% if account.state == "delaware" %}selected{% endif %}>Delaware</option>
-                        <option value="florida" {% if account.state == "florida" %}selected{% endif %}>Florida</option>
-                        <option value="georgia" {% if account.state == "georgia" %}selected{% endif %}>Georgia</option>
-                        <option value="hawaii" {% if account.state == "hawaii" %}selected{% endif %}>Hawaii</option>
-                        <option value="idaho" {% if account.state == "idaho" %}selected{% endif %}>Idaho</option>
-                        <option value="illinois" {% if account.state == "illinois" %}selected{% endif %}>Illinois</option>
-                        <option value="indiana" {% if account.state == "indiana" %}selected{% endif %}>Indiana</option>
-                        <option value="iowa" {% if account.state == "iowa" %}selected{% endif %}>Iowa</option>
-                        <option value="kansas" {% if account.state == "kansas" %}selected{% endif %}>Kansas</option>
-                        <option value="kentucky" {% if account.state == "kentucky" %}selected{% endif %}>Kentucky</option>
-                        <option value="louisiana" {% if account.state == "louisiana" %}selected{% endif %}>Louisiana</option>
-                        <option value="maine" {% if account.state == "maine" %}selected{% endif %}>Maine</option>
-                        <option value="maryland" {% if account.state == "maryland" %}selected{% endif %}>Maryland</option>
-                        <option value="massachusetts" {% if account.state == "massachusetts" %}selected{% endif %}>Massachusetts</option>
-                        <option value="michigan" {% if account.state == "michigan" %}selected{% endif %}>Michigan</option>
-                        <option value="minnesota" {% if account.state == "minnesota" %}selected{% endif %}>Minnesota</option>
-                        <option value="mississippi" {% if account.state == "mississippi" %}selected{% endif %}>Mississippi</option>
-                        <option value="missouri" {% if account.state == "missouri" %}selected{% endif %}>Missouri</option>
-                        <option value="montana" {% if account.state == "montana" %}selected{% endif %}>Montana</option>
-                        <option value="nebraska" {% if account.state == "nebraska" %}selected{% endif %}>Nebraska</option>
-                        <option value="nevada" {% if account.state == "nevada" %}selected{% endif %}>Nevada</option>
-                        <option value="new-hampshire" {% if account.state == "new-hampshire" %}selected{% endif %}>New Hampshire</option>
-                        <option value="new-jersey" {% if account.state == "new-jersey" %}selected{% endif %}>New Jersey</option>
-                        <option value="new-mexico" {% if account.state == "new-mexico" %}selected{% endif %}>New Mexico</option>
-                        <option value="new-york" {% if account.state == "new-york" %}selected{% endif %}>New York</option>
-                        <option value="north-carolina" {% if account.state == "north-carolina" %}selected{% endif %}>North Carolina</option>
-                        <option value="north-dakota" {% if account.state == "north-dakota" %}selected{% endif %}>North Dakota</option>
-                        <option value="ohio" {% if account.state == "ohio" %}selected{% endif %}>Ohio</option>
-                        <option value="oklahoma" {% if account.state == "oklahoma" %}selected{% endif %}>Oklahoma</option>
-                        <option value="oregon" {% if account.state == "oregon" %}selected{% endif %}>Oregon</option>
-                        <option value="pennsylvania" {% if account.state == "pennsylvania" %}selected{% endif %}>Pennsylvania</option>
-                        <option value="rhode-island" {% if account.state == "rhode-island" %}selected{% endif %}>Rhode Island</option>
-                        <option value="south-carolina" {% if account.state == "south-carolina" %}selected{% endif %}>South Carolina</option>
-                        <option value="south-dakota" {% if account.state == "south-dakota" %}selected{% endif %}>South Dakota</option>
-                        <option value="tennessee" {% if account.state == "tennessee" %}selected{% endif %}>Tennessee</option>
-                        <option value="texas" {% if account.state == "texas" %}selected{% endif %}>Texas</option>
-                        <option value="utah" {% if account.state == "utah" %}selected{% endif %}>Utah</option>
-                        <option value="vermont" {% if account.state == "vermont" %}selected{% endif %}>Vermont</option>
-                        <option value="virginia" {% if account.state == "virginia" %}selected{% endif %}>Virginia</option>
-                        <option value="washington" {% if account.state == "washington" %}selected{% endif %}>Washington</option>
-                        <option value="west-virginia" {% if account.state == "west-virginia" %}selected{% endif %}>West Virginia</option>
-                        <option value="wisconsin" {% if account.state == "wisconsin" %}selected{% endif %}>Wisconsin</option>
-                        <option value="wyoming" {% if account.state == "wyoming" %}selected{% endif %}>Wyoming</option>
-                    </select>
-                    <label style="margin-left: 10px;" for="zip">Zip Code:</label>
-                    <input type="text" id="zip" name="zip" value="{{ account.zipcode }}"><br>
-                </div>
-                <div class="form-row">  
-                    <span class="error" id="stateError"></span> 
-                    <span class="error" id="zipError"></span>
+                <div class="form-group">
+                    <div class="form-stack">
+                        <label for="state">State</label>
+                        <select name="state" id="state" value="{{ account.state }}">
+                            <option value="noState"></option>
+                            <option value="Alabama" {% if account.state == "Alabama" %}selected{% endif %}>Alabama</option>
+                            <option value="Alaska" {% if account.state == "Alaska" %}selected{% endif %}>Alaska</option>
+                            <option value="Arizona" {% if account.state == "Arizona" %}selected{% endif %}>Arizona</option>
+                            <option value="Arkansas" {% if account.state == "Arkansas" %}selected{% endif %}>Arkansas</option>
+                            <option value="California" {% if account.state == "California" %}selected{% endif %}>California</option>
+                            <option value="Colorado" {% if account.state == "Colorado" %}selected{% endif %}>Colorado</option>
+                            <option value="Connecticut" {% if account.state == "Connecticut" %}selected{% endif %}>Connecticut</option>
+                            <option value="Delaware" {% if account.state == "Delaware" %}selected{% endif %}>Delaware</option>
+                            <option value="Florida" {% if account.state == "Florida" %}selected{% endif %}>Florida</option>
+                            <option value="Georgia" {% if account.state == "Georgia" %}selected{% endif %}>Georgia</option>
+                            <option value="Hawaii" {% if account.state == "Hawaii" %}selected{% endif %}>Hawaii</option>
+                            <option value="Idaho" {% if account.state == "Idaho" %}selected{% endif %}>Idaho</option>
+                            <option value="Illinois" {% if account.state == "Illinois" %}selected{% endif %}>Illinois</option>
+                            <option value="Indiana" {% if account.state == "Indiana" %}selected{% endif %}>Indiana</option>
+                            <option value="Iowa" {% if account.state == "Iowa" %}selected{% endif %}>Iowa</option>
+                            <option value="kansas" {% if account.state == "Kansas" %}selected{% endif %}>Kansas</option>
+                            <option value="Kentucky" {% if account.state == "Kentucky" %}selected{% endif %}>Kentucky</option>
+                            <option value="Louisiana" {% if account.state == "Louisiana" %}selected{% endif %}>Louisiana</option>
+                            <option value="Maine" {% if account.state == "Maine" %}selected{% endif %}>Maine</option>
+                            <option value="Maryland" {% if account.state == "Maryland" %}selected{% endif %}>Maryland</option>
+                            <option value="Massachusetts" {% if account.state == "Massachusetts" %}selected{% endif %}>Massachusetts</option>
+                            <option value="Michigan" {% if account.state == "Michigan" %}selected{% endif %}>Michigan</option>
+                            <option value="Minnesota" {% if account.state == "Minnesota" %}selected{% endif %}>Minnesota</option>
+                            <option value="Mississippi" {% if account.state == "Mississippi" %}selected{% endif %}>Mississippi</option>
+                            <option value="Missouri" {% if account.state == "Missouri" %}selected{% endif %}>Missouri</option>
+                            <option value="Montana" {% if account.state == "Montana" %}selected{% endif %}>Montana</option>
+                            <option value="Nebraska" {% if account.state == "Nebraska" %}selected{% endif %}>Nebraska</option>
+                            <option value="Nevada" {% if account.state == "Nevada" %}selected{% endif %}>Nevada</option>
+                            <option value="New Hampshire" {% if account.state == "New Hampshire" %}selected{% endif %}>New Hampshire</option>
+                            <option value="New Jersey" {% if account.state == "New Jersey" %}selected{% endif %}>New Jersey</option>
+                            <option value="New Mexico" {% if account.state == "New Mexico" %}selected{% endif %}>New Mexico</option>
+                            <option value="New York" {% if account.state == "New York" %}selected{% endif %}>New York</option>
+                            <option value="North Carolina" {% if account.state == "North Carolina" %}selected{% endif %}>North Carolina</option>
+                            <option value="North Dakota" {% if account.state == "North Dakota" %}selected{% endif %}>North Dakota</option>
+                            <option value="Ohio" {% if account.state == "Ohio" %}selected{% endif %}>Ohio</option>
+                            <option value="Oklahoma" {% if account.state == "Oklahoma" %}selected{% endif %}>Oklahoma</option>
+                            <option value="Oregon" {% if account.state == "Oregon" %}selected{% endif %}>Oregon</option>
+                            <option value="Pennsylvania" {% if account.state == "Pennsylvania" %}selected{% endif %}>Pennsylvania</option>
+                            <option value="Rhode Island" {% if account.state == "Rhode Island" %}selected{% endif %}>Rhode Island</option>
+                            <option value="South Carolina" {% if account.state == "South Carolina" %}selected{% endif %}>South Carolina</option>
+                            <option value="South Dakota" {% if account.state == "South Dakota" %}selected{% endif %}>South Dakota</option>
+                            <option value="Tennessee" {% if account.state == "Tennessee" %}selected{% endif %}>Tennessee</option>
+                            <option value="Texas" {% if account.state == "Texas" %}selected{% endif %}>Texas</option>
+                            <option value="Utah" {% if account.state == "Utah" %}selected{% endif %}>Utah</option>
+                            <option value="Vermont" {% if account.state == "Vermont" %}selected{% endif %}>Vermont</option>
+                            <option value="Virginia" {% if account.state == "Virginia" %}selected{% endif %}>Virginia</option>
+                            <option value="Washington" {% if account.state == "Washington" %}selected{% endif %}>Washington</option>
+                            <option value="West-virginia" {% if account.state == "West-Virginia" %}selected{% endif %}>West Virginia</option>
+                            <option value="Wisconsin" {% if account.state == "Wisconsin" %}selected{% endif %}>Wisconsin</option>
+                            <option value="Wyoming" {% if account.state == "Wyoming" %}selected{% endif %}>Wyoming</option>
+                        </select>
+                        <span class="error" id="stateError"></span>
+                    </div>
+                    <div class="form-stack">
+                        <label style="margin-left: 10px;" for="zip">Zip Code</label>
+                        <input type="text" id="zip" name="zip" value="{{ account.zipcode }}">
+                        <span class="error" id="zipError"></span>
+                    </div>
                 </div>
                 <button type="submit">Finish</button>
                 <div class="error" id="formError" style="text-align: center; height: 6px; margin-top: 10px;"></div>

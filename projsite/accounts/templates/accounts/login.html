@@ -10,21 +10,21 @@
 
 {% block content %}
     <section class="centered">
-        <form id="find_form" action="{% url 'accounts:login' %}" method="post">
-            <h2>Enter an Email or Phone to Find Your Account:</h2>
-            <div class="form-row">
-                <label for="email">Email: </label>
-                <input id="email" type="text" name="email">
-            </div>
+        <form id="login_form" action="{% url 'accounts:login' %}" method="post">
+            <label for="email">Email </label>
+            <input id="email" type="text" name="email">
             <div class="error" id="emailError"></div>
-            <div class="form-row">
-                <label for="phone">Phone: </label>
-                <input id="phone" type="text" name="phone">
+            <label for="password">Password </label>
+            <div style="position: relative;">
+                <input id="password" type="password" name="password" style="padding-right: 60px;">
+                <button class="password-button" type="button" id="togglePassword"
+                    style="position: absolute; right: 8px; bottom: 0;">
+                </button>
             </div>
-            <div class="error" id="phoneError"></div>
+            <div class="error" id="passwordError"></div>
             <div class="error" id="formError">
             {% if error %}
-                Sorry, it looks like there is no account with that contact information.
+                {{ error}}
             {% endif %}
             </div>
             <button type="submit">Login</button>

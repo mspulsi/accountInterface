@@ -5,105 +5,117 @@
 {% endblock %}
 
 {% block top %}
-    Create a New Account
+    New Account
 {% endblock %}
 
 {% block content %}
     <main>
         <section class="centered">
-            <form id="form" method="post" action="{% url 'accounts:new-account' %}">
-                <h2 style="margin-left: -30px;">Please Provide the Following Information:</h2>
-                <h3 style="margin-top: 5px; margin-left: -30px;">*All Fields are Required</h3>
-                <div class="form-row">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" id="first_name" name="first_name"><br>
-                    <label style="margin-left: 10px;" for="last_name">Last Name:</label>
-                    <input type="text" id="last_name" name="last_name"><br>
-                </div>
-                <div class="error" id="nameError"></div>
-                <div class="form-row">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email"><br>
-                </div>
+            <form id="new_account_form" method="post" action="{% url 'accounts:new-account' %}">
+                <h3 style="margin-top: 5px;">All Fields Required</h3>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email">
                 <div class="error" id="emailError"></div>
-                <div class="form-row">
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone"><br>
+                <label for="password">Password</label>
+                <div style="position: relative;">
+                    <input id="password" type="password" name="password" style="padding-right: 60px;">
+                    <button class="password-button" type="button" id="togglePassword"
+                        style="position: absolute; right: 8px; bottom: 0;">
+                    </button>
                 </div>
+                <div class="error" id="passwordError"></div>
+                <div class="form-group">
+                    <div class="form-stack">
+                        <label for="first_name">First Name</label>  
+                        <input type="text" id="first_name" name="first_name">
+                        <span class="error" id="first_nameError"></span>
+                    </div>
+                    <div class="form-stack">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name">
+                        <span class="error" id="last_nameError"></span>
+                    </div>
+                </div>
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
                 <div class="error" id="phoneError"></div>
-                <h3 style="margin-left: -30px; font-size: 20px;">Home Address:</h3>
-                <div class="form-row">
-                    <label for="street">Street:</label>
-                    <input style="flex: 2" type="text" id="street" name="street"><br>
-                    <label  style="margin-left: 10px;" for="city">City:</label>
-                    <input type="text" id="city" name="city"><br>
+                <h3>Address</h3>
+                <div class="form-group">
+                    <div class="form-stack" style="flex: 2;">
+                        <label for="street">Street</label>
+                        <input type="text" id="street" name="street">
+                        <span class="error" id="streetError"></span>
+                    </div>
+                    <div class="form-stack" style="flex: 1;">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city">
+                        <span class="error" id="cityError"></span>
+                    </div>
                 </div>
-                <div class="form-row">
-                    <span class="error"  id="streetError"></span>
-                    <span class="error" id="cityError"></span>
-                </div>
-                <div class="form-row">
-                    <label for="state">State:</label>
-                    <select name="state" id="state">
-                        <option value="noState"></option>
-                        <option value="alabama">Alabama</option>
-                        <option value="alaska">Alaska</option>
-                        <option value="arizona">Arizona</option>
-                        <option value="arkansas">Arkansas</option>
-                        <option value="california">California</option>
-                        <option value="colorado">Colorado</option>
-                        <option value="connecticut">Connecticut</option>
-                        <option value="delaware">Delaware</option>
-                        <option value="florida">Florida</option>
-                        <option value="georgia">Georgia</option>
-                        <option value="hawaii">Hawaii</option>
-                        <option value="idaho">Idaho</option>
-                        <option value="illinois">Illinois</option>
-                        <option value="indiana">Indiana</option>
-                        <option value="iowa">Iowa</option>
-                        <option value="kansas">Kansas</option>
-                        <option value="kentucky">Kentucky</option>
-                        <option value="louisiana">Louisiana</option>
-                        <option value="maine">Maine</option>
-                        <option value="maryland">Maryland</option>
-                        <option value="massachusetts">Massachusetts</option>
-                        <option value="michigan">Michigan</option>
-                        <option value="minnesota">Minnesota</option>
-                        <option value="mississippi">Mississippi</option>
-                        <option value="missouri">Missouri</option>
-                        <option value="montana">Montana</option>
-                        <option value="nebraska">Nebraska</option>
-                        <option value="nevada">Nevada</option>
-                        <option value="new-hampshire">New Hampshire</option>
-                        <option value="new-jersey">New Jersey</option>
-                        <option value="new-mexico">New Mexico</option>
-                        <option value="new-york">New York</option>
-                        <option value="north-carolina">North Carolina</option>
-                        <option value="north-dakota">North Dakota</option>
-                        <option value="ohio">Ohio</option>
-                        <option value="oklahoma">Oklahoma</option>
-                        <option value="oregon">Oregon</option>
-                        <option value="pennsylvania">Pennsylvania</option>
-                        <option value="rhode-island">Rhode Island</option>
-                        <option value="south-carolina">South Carolina</option>
-                        <option value="south-dakota">South Dakota</option>
-                        <option value="tennessee">Tennessee</option>
-                        <option value="texas">Texas</option>
-                        <option value="utah">Utah</option>
-                        <option value="vermont">Vermont</option>
-                        <option value="virginia">Virginia</option>
-                        <option value="washington">Washington</option>
-                        <option value="west-virginia">West Virginia</option>
-                        <option value="wisconsin">Wisconsin</option>
-                        <option value="wyoming">Wyoming</option>
-                    </select>
-                    <label style="margin-left: 10px;" for="zip">Zip Code:</label>
-                    <input type="text" id="zip" name="zip"><br>
-                </div>
-                <div class="form-row">  
-                    <span class="error" id="stateError"></span> 
-                    <span class="error" id="zipError"></span>
-                </div>
+                <div class="form-group">
+                    <div class="form-stack" style="flex: 1;">
+                        <label for="state">State</label>
+                        <select name="state" id="state">
+                            <option value="noState"></option>
+                            <option value="Alabama">Alabama</option>
+                            <option value="Alaska">Alaska</option>
+                            <option value="Arizona">Arizona</option>
+                            <option value="Arkansas">Arkansas</option>
+                            <option value="California">California</option>
+                            <option value="Colorado">Colorado</option>
+                            <option value="Connecticut">Connecticut</option>
+                            <option value="Delaware">Delaware</option>
+                            <option value="Florida">Florida</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Hawaii">Hawaii</option>
+                            <option value="Idaho">Idaho</option>
+                            <option value="Illinois">Illinois</option>
+                            <option value="Indiana">Indiana</option>
+                            <option value="Iowa">Iowa</option>
+                            <option value="Kansas">Kansas</option>
+                            <option value="Kentucky">Kentucky</option>
+                            <option value="Louisiana">Louisiana</option>
+                            <option value="Maine">Maine</option>
+                            <option value="Maryland">Maryland</option>
+                            <option value="Massachusetts">Massachusetts</option>
+                            <option value="Michigan">Michigan</option>
+                            <option value="Minnesota">Minnesota</option>
+                            <option value="Mississippi">Mississippi</option>
+                            <option value="Missouri">Missouri</option>
+                            <option value="Montana">Montana</option>
+                            <option value="Nebraska">Nebraska</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="New Hampshire">New Hampshire</option>
+                            <option value="New Jersey">New Jersey</option>
+                            <option value="New Mexico">New Mexico</option>
+                            <option value="New York">New York</option>
+                            <option value="North Carolina">North Carolina</option>
+                            <option value="North Dakota">North Dakota</option>
+                            <option value="Ohio">Ohio</option>
+                            <option value="Oklahoma">Oklahoma</option>
+                            <option value="Oregon">Oregon</option>
+                            <option value="Pennsylvania">Pennsylvania</option>
+                            <option value="Rhode island">Rhode Island</option>
+                            <option value="South carolina">South Carolina</option>
+                            <option value="South dakota">South Dakota</option>
+                            <option value="Tennessee">Tennessee</option>
+                            <option value="Texas">Texas</option>
+                            <option value="Utah">Utah</option>
+                            <option value="Vermont">Vermont</option>
+                            <option value="Virginia">Virginia</option>
+                            <option value="Washington">Washington</option>
+                            <option value="West-virginia">West Virginia</option>
+                            <option value="Wisconsin">Wisconsin</option>
+                            <option value="Wyoming">Wyoming</option>
+                        </select>
+                        <span class="error" id="stateError"></span>
+                    </div>
+                    <div class="form-stack" style="flex: 1;">
+                        <label for="zip">Zip Code</label>
+                        <input type="text" id="zip" name="zip">
+                        <span class="error" id="zipError"></span>
+                    </div>
+                </div> 
                 <button type="submit">Create Account</button>
                 <div class="error" id="formError" style="text-align: center; height: 6px; margin-top: 10px;"></div>
                 {% csrf_token %}
